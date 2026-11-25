@@ -1,0 +1,298 @@
+{
+  "drugs": [
+    {
+      "id": "D01",
+      "name": "Metformin",
+      "category": "Antidiabetic",
+      "clearance": "renal",
+      "renal_elimination_rate": 0.90,
+      "hepatic_toxicity": 0.10,
+      "safe_alternatives": ["Sitagliptin", "Empagliflozin"]
+    },
+    {
+      "id": "D02",
+      "name": "Lisinopril",
+      "category": "ACE Inhibitor",
+      "clearance": "renal",
+      "renal_elimination_rate": 0.85,
+      "hepatic_toxicity": 0.05,
+      "safe_alternatives": ["Amlodipine"]
+    },
+    {
+      "id": "D03",
+      "name": "Ibuprofen",
+      "category": "NSAID",
+      "clearance": "mixed",
+      "renal_elimination_rate": 0.65,
+      "hepatic_toxicity": 0.20,
+      "safe_alternatives": ["Acetaminophen", "Topical Diclofenac"]
+    },
+    {
+      "id": "D04",
+      "name": "Atorvastatin",
+      "category": "Statin",
+      "clearance": "hepatic",
+      "renal_elimination_rate": 0.10,
+      "hepatic_toxicity": 0.50,
+      "safe_alternatives": ["Pravastatin", "Rosuvastatin"]
+    },
+    {
+      "id": "D05",
+      "name": "Clopidogrel",
+      "category": "Antiplatelet",
+      "clearance": "hepatic",
+      "renal_elimination_rate": 0.50,
+      "hepatic_toxicity": 0.30,
+      "safe_alternatives": ["Prasugrel"]
+    },
+    {
+      "id": "D06",
+      "name": "Amiodarone",
+      "category": "Antiarrhythmic",
+      "clearance": "hepatic",
+      "renal_elimination_rate": 0.05,
+      "hepatic_toxicity": 0.80,
+      "safe_alternatives": ["Dronedarone"]
+    },
+    {
+      "id": "D07",
+      "name": "Warfarin",
+      "category": "Anticoagulant",
+      "clearance": "hepatic",
+      "renal_elimination_rate": 0.15,
+      "hepatic_toxicity": 0.40,
+      "safe_alternatives": ["Apixaban", "Dabigatran"]
+    },
+    {
+      "id": "D08",
+      "name": "Spironolactone",
+      "category": "Potassium-sparing Diuretic",
+      "clearance": "renal",
+      "renal_elimination_rate": 0.70,
+      "hepatic_toxicity": 0.10,
+      "safe_alternatives": ["Furosemide"]
+    },
+    {
+      "id": "D09",
+      "name": "Omeprazole",
+      "category": "PPI",
+      "clearance": "hepatic",
+      "renal_elimination_rate": 0.20,
+      "hepatic_toxicity": 0.25,
+      "safe_alternatives": ["Famotidine", "Pantoprazole"]
+    },
+    {
+      "id": "D10",
+      "name": "Digoxin",
+      "category": "Cardiac Glycoside",
+      "clearance": "renal",
+      "renal_elimination_rate": 0.80,
+      "hepatic_toxicity": 0.10,
+      "safe_alternatives": ["Bisoprolol"]
+    },
+    {
+      "id": "D11",
+      "name": "Levothyroxine",
+      "category": "Thyroid Hormone",
+      "clearance": "hepatic",
+      "renal_elimination_rate": 0.10,
+      "hepatic_toxicity": 0.15,
+      "safe_alternatives": ["Liothyronine"]
+    },
+    {
+      "id": "D12",
+      "name": "Methotrexate",
+      "category": "Immunosuppressant",
+      "clearance": "renal",
+      "renal_elimination_rate": 0.85,
+      "hepatic_toxicity": 0.75,
+      "safe_alternatives": ["Leflunomide", "Sulfasalazine"]
+    },
+    {
+      "id": "D13",
+      "name": "Ciprofloxacin",
+      "category": "Fluoroquinolone Antibiotic",
+      "clearance": "renal",
+      "renal_elimination_rate": 0.70,
+      "hepatic_toxicity": 0.35,
+      "safe_alternatives": ["Amoxicillin-Clavulanate", "Cefuroxime"]
+    },
+    {
+      "id": "D14",
+      "name": "Simvastatin",
+      "category": "Statin",
+      "clearance": "hepatic",
+      "renal_elimination_rate": 0.15,
+      "hepatic_toxicity": 0.60,
+      "safe_alternatives": ["Pravastatin"]
+    },
+    {
+      "id": "D15",
+      "name": "Fluconazole",
+      "category": "Antifungal",
+      "clearance": "renal",
+      "renal_elimination_rate": 0.80,
+      "hepatic_toxicity": 0.55,
+      "safe_alternatives": ["Terbinafine", "Nystatin"]
+    },
+    {
+      "id": "D16",
+      "name": "Carbamazepine",
+      "category": "Anticonvulsant",
+      "clearance": "hepatic",
+      "renal_elimination_rate": 0.30,
+      "hepatic_toxicity": 0.65,
+      "safe_alternatives": ["Levetiracetam", "Lamotrigine"]
+    },
+    {
+      "id": "D17",
+      "name": "Sertraline",
+      "category": "SSRI Antidepressant",
+      "clearance": "hepatic",
+      "renal_elimination_rate": 0.20,
+      "hepatic_toxicity": 0.25,
+      "safe_alternatives": ["Escitalopram"]
+    },
+    {
+      "id": "D18",
+      "name": "Tramadol",
+      "category": "Opioid Analgesic",
+      "clearance": "mixed",
+      "renal_elimination_rate": 0.60,
+      "hepatic_toxicity": 0.30,
+      "safe_alternatives": ["Acetaminophen", "Codeine"]
+    },
+    {
+      "id": "D19",
+      "name": "Clarithromycin",
+      "category": "Macrolide Antibiotic",
+      "clearance": "hepatic",
+      "renal_elimination_rate": 0.40,
+      "hepatic_toxicity": 0.50,
+      "safe_alternatives": ["Azithromycin"]
+    },
+    {
+      "id": "D20",
+      "name": "Allopurinol",
+      "category": "Xanthine Oxidase Inhibitor",
+      "clearance": "renal",
+      "renal_elimination_rate": 0.80,
+      "hepatic_toxicity": 0.20,
+      "safe_alternatives": ["Febuxostat"]
+    }
+  ],
+  "interactions": [
+    {
+      "source": "Lisinopril",
+      "target": "Spironolactone",
+      "base_risk": 0.85,
+      "pathway": "Renal / Hyperkalemia",
+      "description": "خطر تآزري لارتفاع حاد في بوتاسيوم الدم مع سمية كلوية"
+    },
+    {
+      "source": "Lisinopril",
+      "target": "Ibuprofen",
+      "base_risk": 0.75,
+      "pathway": "Renal Vasoconstriction",
+      "description": "تثبيط البروستاجلاندين الكلوي مما يعطل التروية الكلوية"
+    },
+    {
+      "source": "Warfarin",
+      "target": "Amiodarone",
+      "base_risk": 0.90,
+      "pathway": "CYP2C9 Inhibition",
+      "description": "تثبيط استقلاب الوارفارين التراكمي وتفاقم خطر النزيف المميت"
+    },
+    {
+      "source": "Warfarin",
+      "target": "Ibuprofen",
+      "base_risk": 0.80,
+      "pathway": "Platelet & Mucosal",
+      "description": "مضاعفة احتمالية تقرح ونزيف الجهاز الهضمي الحاد"
+    },
+    {
+      "source": "Clopidogrel",
+      "target": "Omeprazole",
+      "base_risk": 0.70,
+      "pathway": "CYP2C19 Bioactivation",
+      "description": "منع تحول الكلوبيدوجريل لشكله الفعال وفقدان الحماية القلبية"
+    },
+    {
+      "source": "Digoxin",
+      "target": "Amiodarone",
+      "base_risk": 0.85,
+      "pathway": "P-glycoprotein Efflux",
+      "description": "مضاعفة تركيز الديجوكسين السمي في البلازما"
+    },
+    {
+      "source": "Spironolactone",
+      "target": "Ibuprofen",
+      "base_risk": 0.65,
+      "pathway": "Renal Prostaglandin",
+      "description": "تراجع كفاءة إدرار البول واحتباس السوائل"
+    },
+    {
+      "source": "Methotrexate",
+      "target": "Ibuprofen",
+      "base_risk": 0.88,
+      "pathway": "Renal Clearance Inhibition",
+      "description": "تثبيط إخراج الميثوتريكسات الكلوي مسبباً تثبيطاً حاداً لنخاع العظم"
+    },
+    {
+      "source": "Simvastatin",
+      "target": "Amiodarone",
+      "base_risk": 0.82,
+      "pathway": "CYP3A4 Saturation",
+      "description": "خطر انحلال الربيدات العضلي والفشل الكلوي الحاد"
+    },
+    {
+      "source": "Simvastatin",
+      "target": "Clarithromycin",
+      "base_risk": 0.87,
+      "pathway": "Potent CYP3A4 Blockade",
+      "description": "ارتفاع تركيز الستاتين بشكل سام وحدوث اعتلال عضلي حاد"
+    },
+    {
+      "source": "Warfarin",
+      "target": "Fluconazole",
+      "base_risk": 0.86,
+      "pathway": "Potent CYP2C9 Inhibition",
+      "description": "ارتفاع حاد في تميع الدم وتضاعف مؤشر INR لنزيف تلقائي"
+    },
+    {
+      "source": "Sertraline",
+      "target": "Tramadol",
+      "base_risk": 0.80,
+      "pathway": "Serotonin Synergy",
+      "description": "خطر متلازمة السيروتونين المهددة للحياة مع نوبات صرعية"
+    },
+    {
+      "source": "Ciprofloxacin",
+      "target": "Warfarin",
+      "base_risk": 0.72,
+      "pathway": "Microbiome Clearance & CYP1A2",
+      "description": "تثبيط استقلاب الوارفارين مع تدمير بكتيريا فيتامين K المعوية"
+    },
+    {
+      "source": "Carbamazepine",
+      "target": "Warfarin",
+      "base_risk": 0.78,
+      "pathway": "CYP Induction",
+      "description": "تسريع هدم الوارفارين بدرجة عنيفة وفقدان التمييع وظهور جلطات"
+    },
+    {
+      "source": "Digoxin",
+      "target": "Clarithromycin",
+      "base_risk": 0.83,
+      "pathway": "Gut Flora & P-gp Block",
+      "description": "تراكم سمية الديجوكسين القلبية وحدوث بطء نبض مميت"
+    },
+    {
+      "source": "Metformin",
+      "target": "Ciprofloxacin",
+      "base_risk": 0.68,
+      "pathway": "Renal Organic Cation Transporter",
+      "description": "تراجع إخراج الميتفورمين واحتمالية الحماض اللبني (Lactic Acidosis)"
+    }
+  ]
+}

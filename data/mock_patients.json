@@ -1,0 +1,109 @@
+[
+  {
+    "national_id": "1001",
+    "name": "عبدالله محمد السعيد",
+    "age": 74,
+    "gender": "ذكر",
+    "gfr": 32.0,
+    "liver_alt": 42.0,
+    "pgx_profile": "Normal",
+    "chronic_diseases": [
+      "فشل قلبي مزمن",
+      "ارتفاع ضغط الدم",
+      "قصور كلوي من الدرجة الرابعة"
+    ],
+    "current_medications": [
+      "Lisinopril",
+      "Spironolactone",
+      "Digoxin"
+    ]
+  },
+  {
+    "national_id": "1002",
+    "name": "فاطمة أحمد الشهري",
+    "age": 66,
+    "gender": "أنثى",
+    "gfr": 76.0,
+    "liver_alt": 118.0,
+    "pgx_profile": "Poor Metabolizer",
+    "chronic_diseases": [
+      "رجفان أذيني",
+      "دهون الدم",
+      "تدهن الكبد غير الكحولي"
+    ],
+    "current_medications": [
+      "Warfarin",
+      "Amiodarone",
+      "Atorvastatin"
+    ]
+  },
+  {
+    "national_id": "1003",
+    "name": "سعد ناصر الدوسري",
+    "age": 58,
+    "gender": "ذكر",
+    "gfr": 88.0,
+    "liver_alt": 30.0,
+    "pgx_profile": "Normal",
+    "chronic_diseases": [
+      "السكري النوع الثاني",
+      "احتشاء عضلة القلب القديم"
+    ],
+    "current_medications": [
+      "Metformin",
+      "Clopidogrel",
+      "Omeprazole"
+    ]
+  },
+  {
+    "national_id": "1004",
+    "name": "نورة عبدالعزيز العتيبي",
+    "age": 34,
+    "gender": "أنثى",
+    "gfr": 105.0,
+    "liver_alt": 22.0,
+    "pgx_profile": "Normal",
+    "chronic_diseases": [
+      "التهاب المفاصل الروماتويدي",
+      "خمول الغدة الدرقية"
+    ],
+    "current_medications": [
+      "Methotrexate",
+      "Levothyroxine"
+    ]
+  },
+  {
+    "national_id": "1005",
+    "name": "خالد بن سلطان الغامدي",
+    "age": 28,
+    "gender": "ذكر",
+    "gfr": 112.0,
+    "liver_alt": 26.0,
+    "pgx_profile": "Rapid Metabolizer",
+    "chronic_diseases": [
+      "اكتئاب سريري مزمن",
+      "ألم عصبي ناتج عن إصابة"
+    ],
+    "current_medications": [
+      "Sertraline",
+      "Tramadol"
+    ]
+  },
+  {
+    "national_id": "1007",
+    "name": "عمر ياسر الحربي",
+    "age": 46,
+    "gender": "ذكر",
+    "gfr": 82.0,
+    "liver_alt": 65.0,
+    "pgx_profile": "Normal",
+    "chronic_diseases": [
+      "صرع جزئي مستقر",
+      "جلطة وريدية سابقة"
+    ],
+    "current_medications": [
+      "Carbamazepine",
+      "Warfarin"
+    ]
+  }
+]

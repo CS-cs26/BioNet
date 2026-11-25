@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة BioNet - الكشف التراكمي للتسمم الدوائي</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="brand">
+        <span class="icon">🔬</span>
+        <div>
+          <h1>الشبكة الحيوية <span>(BioNet)</span></h1>
+          <p>محاكاة التوأم الحيوي وخوارزميات Pharma-GNN لسلامة الأدوية المتعددة</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="fhirModalBtn" class="nav-badge-btn" style="border-color:#a29bfe; color:#a29bfe; background:rgba(162, 155, 254, 0.1);">
+          ⚡ معيار HL7 FHIR
+        </button>
+        <a href="new_patient.html" class="nav-badge-btn" style="border-color: var(--safe-green); color: var(--safe-green); background: rgba(0, 210, 106, 0.1);">
+          <span class="badge-icon">➕</span> مريض جديد
+        </a>
+        <a href="patients.html" class="nav-badge-btn">
+          <span class="badge-icon">📋</span> سجل المرضى الموحد
+        </a>
+        <div class="system-status">
+          <span class="dot"></span> السيرفر متصل
+        </div>
+      </div>
+    </header>
+
+    <main class="grid-layout">
+      <section class="side-panel">
+        <div class="card">
+          <div class="card-header-flex">
+            <h2>أداة الاستدعاء السريع (QuickFetch)</h2>
+            <div style="display:flex; gap:10px;">
+              <a href="new_patient.html" class="subtle-link" style="color:var(--safe-green);">+ إضافة مريض</a>
+              <a href="patients.html" class="subtle-link">📋 السجل العام</a>
+            </div>
+          </div>
+          <div class="row">
+            <input type="text" id="nationalIdInput" placeholder="رقم الهوية (1001, 1002, 1003...)" value="1001">
+            <button id="fetchBtn" class="btn btn-primary">استدعاء</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>بيانات التوأم الحيوي (Bio-Twin)</h2>
+          <div class="form-grid">
+            <div class="field">
+              <label>اسم المريض:</label>
+              <input type="text" id="patientName" readonly>
+            </div>
+            <div class="field">
+              <label>العمر:</label>
+              <input type="number" id="patientAge" value="72">
+            </div>
+            <div class="field">
+              <label>معدل الترشيح الكلوي (GFR):</label>
+              <input type="number" id="patientGFR" value="34">
+            </div>
+            <div class="field">
+              <label>إنزيم الكبد (ALT):</label>
+              <input type="number" id="patientALT" value="42">
+            </div>
+            <div class="field" style="grid-column: span 2;">
+              <label>النمط الجيني الدوائي (CYP450 PGx):</label>
+              <select id="patientPGx">
+                <option value="Normal">طبيعي الأيض (Normal Metabolizer - Extensive)</option>
+                <option value="Poor Metabolizer">بطيء الأيض (Poor Metabolizer - تراكم دوائي حاد)</option>
+                <option value="Rapid Metabolizer">سريع الأيض (Rapid Metabolizer - تصفية فائقة)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header-flex">
+            <h2>الجدولة والتوقيت (Time-Decay)</h2>
+            <span id="intervalDisplay" style="color:var(--cyan-accent); font-weight:bold; font-size:0.85rem;">جرعة متزامنة (0 ساعة)</span>
+          </div>
+          <p style="font-size:0.75rem; color:var(--text-secondary); margin-bottom:8px;">فحص أثر المباعدة بين مواعيد أخذ الأدوية على فترة نصف العمر:</p>
+          <input type="range" id="dosingIntervalSlider" min="0" max="8" step="1" value="0" style="width:100%; cursor:pointer;">
+          <div style="display:flex; justify-content:space-between; font-size:0.7rem; color:var(--text-secondary); margin-top:4px;">
+            <span>معاً (0h)</span>
+            <span>تباعد ساعتين</span>
+            <span>تباعد 4 ساعات</span>
+            <span>تباعد 8 ساعات</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>المنظومة الدوائية النشطة</h2>
+          <div class="row">
+            <select id="drugsSelect">
+              <option value="">اختر دواء للإضافة...</option>
+            </select>
+            <button id="addDrugBtn" class="btn btn-secondary">إضافة</button>
+          </div>
+          <div class="tag-container" id="medicationsContainer"></div>
+          <button id="simulateBtn" class="btn btn-action">بدء التحليل التراكمي (Pharma-GNN)</button>
+        </div>
+      </section>
+
+      <section class="main-panel">
+        <div class="metrics-bar">
+          <div class="metric-card">
+            <h4>المؤشر التراكمي للتسمم (CPI)</h4>
+            <div class="score"><span id="cpiScore">--</span><small>/100</small></div>
+            <div id="cpiBadge" class="badge">في انتظار الفحص</div>
+          </div>
+
+          <div class="metric-card">
+            <h4>إجهاد الكلى المحاكى</h4>
+            <div class="progress-bar"><div class="fill" id="renalProgress"></div></div>
+            <span class="metric-sub" id="renalLabel">معدل الإجهاد: --%</span>
+          </div>
+
+          <div class="metric-card">
+            <h4>إجهاد الكبد المحاكى</h4>
+            <div class="progress-bar"><div class="fill hepatic" id="hepaticProgress"></div></div>
+            <span class="metric-sub" id="hepaticLabel">معدل الإجهاد: --%</span>
+          </div>
+        </div>
+
+        <div class="card graph-card">
+          <div class="card-title-row">
+            <h3>مخطط الشبكة التفاعلي (Sub-Graph Interactions)</h3>
+            <span class="legend"><b class="dot-red"></b> عقدة دوائية عالية الخطورة</span>
+          </div>
+          <div id="graphCanvas" class="network-box"></div>
+        </div>
+
+        <div class="card">
+          <h3>توصيات المرشد الآمن (PharmaGuide Actions)</h3>
+          <div id="recommendationsBox" class="rec-list">
+            <p class="placeholder-text">قم بتشغيل المحاكاة لعرض البدائل الآمنة للمنظومة العلاجية.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="fhirModal" class="modal-backdrop" style="display:none;">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>سجل المريض بصيغة معايير HL7 FHIR القياسية</h3>
+        <span class="modal-close" id="closeFhirModal">×</span>
+      </div>
+      <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:10px;">
+        هيكل بيانات قياسي متوافق مع متطلبات الربط الصحي الوطني (Nphies) ومنظومة السجلات الموحدة:
+      </p>
+      <pre id="fhirCodeViewer" class="fhir-pre"></pre>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/graph.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

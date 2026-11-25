@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BioNet - تسجيل مريض جديد</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="brand">
+        <span class="icon">➕</span>
+        <div>
+          <h1>تسجيل مريض جديد <span>(New Bio-Twin)</span></h1>
+          <p>إدخال المعايير الحيوية والمنظومة الدوائية لبناء ملف التوأم الرقمي</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a href="patients.html" class="nav-badge-btn">
+          📋 سجل المرضى
+        </a>
+        <a href="index.html" class="btn btn-primary" style="display:flex; align-items:center; text-decoration:none; height:38px; padding:0 18px;">
+          ← غرفة المحاكاة
+        </a>
+      </div>
+    </header>
+
+    <div class="form-container-card">
+      <form id="newPatientForm">
+        <div class="card" style="margin-bottom: 16px;">
+          <h2>المعلومات الشخصية والسريرية والنمط الجيني</h2>
+          <div class="form-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="field">
+              <label>رقم الهوية الوطنية / الإقامة:*</label>
+              <input type="text" id="newId" placeholder="مثال: 1008" required>
+            </div>
+            <div class="field">
+              <label>اسم المريض الثلاثي:*</label>
+              <input type="text" id="newName" placeholder="مثال: محمد عبدالرحمن الأحمد" required>
+            </div>
+            <div class="field">
+              <label>الجنس:*</label>
+              <select id="newGender" required>
+                <option value="ذكر">ذكر</option>
+                <option value="أنثى">أنثى</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>العمر (بالسنوات):*</label>
+              <input type="number" id="newAge" min="1" max="120" placeholder="مثال: 55" required>
+            </div>
+            <div class="field">
+              <label>كفاءة الكلى GFR (mL/min):*</label>
+              <input type="number" step="0.1" id="newGfr" min="1" max="200" placeholder="مثال: 45" required>
+            </div>
+            <div class="field">
+              <label>إنزيم الكبد ALT (U/L):*</label>
+              <input type="number" step="0.1" id="newAlt" min="1" max="1000" placeholder="مثال: 38" required>
+            </div>
+            <div class="field" style="grid-column: span 3;">
+              <label>النمط الجيني الدوائي لإنزيمات الأيض (Pharmacogenomics - CYP450):*</label>
+              <select id="newPgx">
+                <option value="Normal">طبيعي الأيض (Normal Metabolizer - Extensive)</option>
+                <option value="Poor Metabolizer">بطيء الأيض (Poor Metabolizer - تضاعف خطر التراكم السمي)</option>
+                <option value="Rapid Metabolizer">سريع الأيض (Rapid Metabolizer - تصفية استقلابية فائقة)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 16px;">
+          <h2>التشخيص والحالات المزمنة</h2>
+          <div style="margin-bottom: 12px;">
+            <label style="display:block; font-size:0.75rem; color:var(--text-secondary); margin-bottom:5px;">اختيار سريع من الأمراض المزمنة الشائعة:</label>
+            <div class="row">
+              <select id="commonDiseasesSelect">
+                <option value="">-- اضغط لاختيار مرض مزمن شائع --</option>
+                <option value="ارتفاع ضغط الدم">ارتفاع ضغط الدم (Hypertension)</option>
+                <option value="فشل قلبي مزمن">فشل قلبي مزمن (Heart Failure)</option>
+                <option value="السكري النوع الأول">السكري النوع الأول (Type 1 Diabetes)</option>
+                <option value="السكري النوع الثاني">السكري النوع الثاني (Type 2 Diabetes)</option>
+                <option value="قصور كلوي مزمن">قصور كلوي مزمن (Chronic Kidney Disease)</option>
+                <option value="اضطراب النظم الأذيني">اضطراب النظم الأذيني (Atrial Fibrillation)</option>
+                <option value="احتشاء عضلة القلب">احتشاء عضلة القلب القديم (Post-MI)</option>
+                <option value="دهون الدم">ارتفاع الكوليسترول والدهون (Dyslipidemia)</option>
+                <option value="تدهن الكبد غير الكحولي">تدهن الكبد (NAFLD)</option>
+                <option value="التهاب المفاصل الروماتويدي">التهاب المفاصل الروماتويدي (Rheumatoid Arthritis)</option>
+                <option value="خمول الغدة الدرقية">خمول الغدة الدرقية (Hypothyroidism)</option>
+                <option value="نقرس">داء النقرس (Gout)</option>
+                <option value="صرع جزئي مستقر">مرض الصرع (Epilepsy)</option>
+                <option value="جلطة وريدية سابقة">جلطة وريدية سابقة (History of DVT/PE)</option>
+                <option value="اكتئاب سريري مزمن">اكتئاب سريري مزمن (Depression)</option>
+                <option value="الربو الشعبي المزمن">الربو الشعبي المزمن (Chronic Asthma)</option>
+              </select>
+              <button type="button" id="addCommonDiseaseBtn" class="btn btn-secondary">إضافة للقائمة</button>
+            </div>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.75rem; color:var(--text-secondary); margin-bottom:5px;">أو كتابة تشخيص خاص يدوياً:</label>
+            <div class="row">
+              <input type="text" id="diseaseInput" placeholder="اكتب التشخيص هنا إذا لم تجده في القائمة أعلاه...">
+              <button type="button" id="addCustomDiseaseBtn" class="btn btn-secondary">إضافة المكتوب</button>
+            </div>
+          </div>
+
+          <div class="tag-container" id="diseasesContainer" style="min-height: 55px; margin-top: 12px;"></div>
+        </div>
+
+        <div class="card" style="margin-bottom: 20px;">
+          <h2>المنظومة الدوائية المصروفة للمريض</h2>
+          <div class="row">
+            <select id="newDrugSelect">
+              <option value="">اختر دواء من قائمة الأدوية المسجلة...</option>
+            </select>
+            <button type="button" id="addNewDrugBtn" class="btn btn-secondary">إضافة للدواء</button>
+          </div>
+          <div class="tag-container" id="patientDrugsContainer"></div>
+        </div>
+
+        <button type="submit" class="btn btn-action" style="padding: 14px; font-size: 1.05rem;">
+          💾 حفظ وتفعيل ملف المريض فوراً
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = "http://127.0.0.1:8000/api";
+    let selectedDrugs = [];
+    let diseasesList = [];
+
+    async function initDrugs() {
+      try {
+        const res = await fetch(`${API_BASE}/drugs`);
+        const drugs = await res.json();
+        const select = document.getElementById("newDrugSelect");
+        drugs.forEach(d => {
+          const opt = document.createElement("option");
+          opt.value = d;
+          opt.textContent = d;
+          select.appendChild(opt);
+        });
+      } catch (err) {
+        console.error("فشل تحميل قائمة الأدوية", err);
+      }
+    }
+
+    function addDiseaseToList(diseaseName) {
+      const cleanName = diseaseName.trim();
+      if (cleanName && !diseasesList.includes(cleanName)) {
+        diseasesList.push(cleanName);
+        renderDiseases();
+      }
+    }
+
+    document.getElementById("addCommonDiseaseBtn").addEventListener("click", () => {
+      const select = document.getElementById("commonDiseasesSelect");
+      if (select.value) {
+        addDiseaseToList(select.value);
+        select.value = "";
+      }
+    });
+
+    document.getElementById("addCustomDiseaseBtn").addEventListener("click", () => {
+      const input = document.getElementById("diseaseInput");
+      if (input.value) {
+        addDiseaseToList(input.value);
+        input.value = "";
+      }
+    });
+
+    document.getElementById("diseaseInput").addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("addCustomDiseaseBtn").click();
+      }
+    });
+
+    function renderDiseases() {
+      const container = document.getElementById("diseasesContainer");
+      container.innerHTML = "";
+      diseasesList.forEach(d => {
+        const tag = document.createElement("div");
+        tag.className = "disease-badge";
+        tag.style.display = "inline-flex";
+        tag.style.alignItems = "center";
+        tag.style.gap = "6px";
+        tag.innerHTML = `<span>${d}</span><span style="cursor:pointer;color:var(--danger-color);font-weight:bold;" onclick="removeDisease('${d}')">×</span>`;
+        container.appendChild(tag);
+      });
+    }
+
+    window.removeDisease = function(item) {
+      diseasesList = diseasesList.filter(d => d !== item);
+      renderDiseases();
+    };
+
+    document.getElementById("addNewDrugBtn").addEventListener("click", () => {
+      const select = document.getElementById("newDrugSelect");
+      const val = select.value;
+      if (val && !selectedDrugs.includes(val)) {
+        selectedDrugs.push(val);
+        renderDrugs();
+      }
+    });
+
+    function renderDrugs() {
+      const container = document.getElementById("patientDrugsContainer");
+      container.innerHTML = "";
+      selectedDrugs.forEach(d => {
+        const tag = document.createElement("div");
+        tag.className = "tag";
+        tag.innerHTML = `<span>${d}</span><span class="close" onclick="removePatientDrug('${d}')">×</span>`;
+        container.appendChild(tag);
+      });
+    }
+
+    window.removePatientDrug = function(item) {
+      selectedDrugs = selectedDrugs.filter(d => d !== item);
+      renderDrugs();
+    };
+
+    document.getElementById("newPatientForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (selectedDrugs.length === 0) {
+        alert("يرجى إضافة دواء واحد على الأقل للمنظومة العلاجية للمريض");
+        return;
+      }
+
+      const payload = {
+        national_id: document.getElementById("newId").value.trim(),
+        name: document.getElementById("newName").value.trim(),
+        age: parseInt(document.getElementById("newAge").value, 10),
+        gender: document.getElementById("newGender").value,
+        gfr: parseFloat(document.getElementById("newGfr").value),
+        liver_alt: parseFloat(document.getElementById("newAlt").value),
+        pgx_profile: document.getElementById("newPgx").value,
+        chronic_diseases: diseasesList.length > 0 ? diseasesList : ["لا توجد تشخيصات مسجلة"],
+        current_medications: selectedDrugs
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/patients`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.detail || "تعذر حفظ المريض");
+
+        alert("✓ تم تسجيل المريض وحفظ ملف التوأم الحيوي بنجاح!");
+        sessionStorage.setItem("autoFetchId", payload.national_id);
+        window.location.href = "index.html";
+      } catch (err) {
+        alert(err.message);
+      }
+    });
+
+    initDrugs();
+  </script>
+</body>
+</html>
