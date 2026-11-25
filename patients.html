@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="header-actions">
-        <a href="new_patient.html" class="nav-badge-btn" style="border-color: var(--safe-green); color: var(--safe-green); background: rgba(0, 210, 106, 0.1);">
+        <a href="new_patient.html" class="nav-badge-btn" style="border-color: #2ed573; color: #2ed573; background: rgba(46, 213, 115, 0.1);">
           <span class="badge-icon">➕</span> تسجيل مريض جديد
         </a>
         <a href="index.html" class="btn btn-primary" style="display:flex; align-items:center; text-decoration:none; height:38px; padding:0 18px;">
@@ -36,8 +36,8 @@
     <div class="patients-grid" id="patientsContainer"></div>
   </div>
 
+  <script src="js/api.js"></script>
   <script>
-    const API_BASE = "http://127.0.0.1:8000/api";
     let allPatients = [];
 
     async function loadPatients() {
@@ -45,13 +45,11 @@
       const countLabel = document.getElementById("recordsCount");
       
       try {
-        const res = await fetch(`${API_BASE}/patients/all`);
-        if (!res.ok) throw new Error("تعذر جلب السجل");
-        allPatients = await res.json();
+        allPatients = await ApiClient.getAllPatients();
         countLabel.textContent = `عرض ${allPatients.length} مرضى مسجلين`;
         renderList(allPatients);
       } catch (err) {
-        container.innerHTML = `<div class="card" style="color:var(--danger-color); text-align:center;">تعذر الاتصال بقاعدة بيانات المرضى: تأكد من تشغيل السيرفر.</div>`;
+        container.innerHTML = `<div class="card" style="color:var(--danger-color); text-align:center;">تعذر تحميل بيانات المرضى.</div>`;
       }
     }
 
@@ -121,17 +119,10 @@
       if (!confirmDelete) return;
 
       try {
-        const res = await fetch(`${API_BASE}/patients/${nationalId}`, {
-          method: "DELETE"
-        });
-
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.detail || "تعذر حذف المريض");
-
+        await ApiClient.deletePatient(nationalId);
         allPatients = allPatients.filter(p => p.national_id !== nationalId);
         document.getElementById("recordsCount").textContent = `عرض ${allPatients.length} مرضى مسجلين`;
         renderList(allPatients);
-
       } catch (err) {
         alert(err.message);
       }
