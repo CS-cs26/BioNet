@@ -184,9 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/patients/${id}/fhir`);
-      if (!res.ok) throw new Error("تعذر جلب هيكل FHIR");
-      const fhirData = await res.json();
+      const fhirData = await ApiClient.getPatientFhir(id);
       fhirCodeViewer.textContent = JSON.stringify(fhirData, null, 2);
       fhirModal.style.display = "flex";
     } catch (err) {
